@@ -1,0 +1,98 @@
+EMS
+	1、注册模块 
+		完成注册后，跳转到登录界面/主界面
+	2、登录模块
+		2.1、跳转主页面
+		2.2、返回到当前界面（提示信息，用户密码错误）
+	3、删除
+		回到主页面，（自动刷新）
+	4、修改
+		跳转到一个 修改界面（数据是可以编辑）
+		回到主页面（数据是修改后的，刷新）
+	5、添加
+		跳转到添加界面
+		回到主页面
+
+HTML -- （静态的）超文本标记语言
+JAVA 推出 服务器扩展 JSP 
+内部包含
+1、html js css 代码
+2、java代码片段
+3、指令 （导包）
+
+将页面copy出myeclipse
+后缀名由html该为jsp
+再将5个jsp文件拖回项目中
+
+如果在jsp中书写java代码片段
+<%   %>
+
+JSP也是一个servlet类对象，其内部有9个隐藏对象
+request 
+<tabel>
+	<%
+	List<Emp> emps = request.getA...("emps");
+	for(Emp emp : emps){// 从集合的第一个元素，循环遍历到最后一个元素 （改集合长度为5） 
+	%>
+		<tr>
+			<td><%=emp.getId();%></td>
+			<td><%=emp.getName();%></td>
+			<td><%=emp.getAge();%></td>
+		</tr>
+	<%
+	}
+	%>
+</table>
+
+------
+修改功能
+	1、点击修改按钮（链接）发送请求（根据我提供的id参数，去数据库查询数据）
+		将数据（Emp对象） 转发到 一个修改界面，将Emp除去id外的所有属性，都设置到可编辑的文本框中
+	2、点击修改按钮（id=1）发送请求 update 
+		update from ems_emp set name='??' and age=?? and salary=?? where id=1
+
+
+
+
+1、编写loadAction （集成HttpServlet，实现service方法）
+2、根据请求参数传递过来的id属性的值，利用JDBC查询数据库，将查询到的数据存入Emp对象
+3、转发Emp对象到updateEmp.jsp界面
+	req.setAttribute("emp", emp);
+	req.getRequestDispatcher("updateEmp.jsp").forward(req, resp);
+4、在updateEmp.jsp界面键入java代码片段，获得LoadAction中绑定的数据，将id、name、age、salary的值替换
+	<td valign="middle" align="right">
+		id:
+	</td>
+	<td valign="middle" align="left">
+		<%=emp.getId() %>
+	</td>
+5、修改emplist.jsp页面中的updateEmp 链接的值为  
+	<a href="/EMS/load?id=<%=emp.getId() %>">update emp</a>
+6、在web.xml中添加 针对load请求的 servlet标签
+	<servlet>
+		<servlet-name>loadAction</servlet-name>
+		<servlet-class>cn.edu.cqupt.action.LoadAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loadAction</servlet-name>
+		<url-pattern>/load</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<!-- 此对为注册的逻辑 -->
+	<servlet>
+		<servlet-name>regist</servlet-name>
+		<servlet-class>cn.edu.cqupt.action.RegistAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>regist</servlet-name>
+		<url-pattern>/reg</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 登录逻辑 -->
+	<servlet>
+		<servlet-name>loginAction</servlet-name>
+		<servlet-class>cn.edu.cqupt.action.LoginAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginAction</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 查询所有的雇员 -->
+	<servlet>
+		<servlet-name>listAction</servlet-name>
+		<servlet-class>cn.edu.cqupt.action.ListAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listAction</servlet-name>
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 点击修改按钮后，查询数据的逻辑 -->
+	<servlet>
+		<servlet-name>loadAction</servlet-name>
+		<servlet-class>cn.edu.cqupt.action.LoadAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loadAction</servlet-name>
+		<url-pattern>/load</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 提交修改的数据到数据库 -->
+	<servlet>
+		<servlet-name>updateAction</servlet-name>
+		<servlet-class>cn.edu.cqupt.action.UpdateAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateAction</servlet-name>
+		<url-pattern>/update</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 删除emp对象的逻辑 -->
+	<servlet>
+		<servlet-name>deleteAction</servlet-name>
+		<servlet-class>cn.edu.cqupt.action.DeleteAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deleteAction</servlet-name>
+		<url-pattern>/delete</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 添加emp对象的逻辑 -->
+	<servlet>
+		<servlet-name>addAction</servlet-name>
+		<servlet-class>cn.edu.cqupt.action.AddAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addAction</servlet-name>
+		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+</web-app>
